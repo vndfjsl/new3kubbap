@@ -200,13 +200,7 @@ public class Player : MonoBehaviour
         Speed = isSlow ? Speed * divideSlowSpeed : Speed / divideSlowSpeed;
     }
 
-    public void Action(GameObject scanObj)
-    {
-        //sObj = scanObj;
-        //objData objData = sObj.GetComponent<objData>();
-        //Say(objData.id, objData.npc);
-        //sayPanel.SetBool("isShow", show);
-    }
+    
 
     public void StopFire()
     {
