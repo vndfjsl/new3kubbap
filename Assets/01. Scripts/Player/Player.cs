@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public LayerMask collisionlayer;
 
-    //public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
+    public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
 
     public enum PlayerState
     {
@@ -57,9 +58,9 @@ public class Player : MonoBehaviour
         player = GetComponent<Player>();
         inven = GetComponent<Inventory>();
 
-        GameManager.Instance.playerInput.turnAction += (dir) =>
+        turnAction += (dir) =>
         {
-            playerEquip.equipItemTrm = dir ? playerEquip.rightTrm : playerEquip.leftTrm;
+            equipItemTrm = dir ? rightTrm : leftTrm;
         };
     }
 
@@ -79,10 +80,10 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = GameManager.Instance.show ? 0 : Input.GetAxisRaw("Horizontal");
+        horizontal = SayManager.instance.show ? 0 : Input.GetAxisRaw("Horizontal");
 
-        bool hDown = GameManager.Instance.show ? false : Input.GetButtonDown("Horizontal"); //버튼 누름
-        bool hUp = GameManager.Instance.show ? false : Input.GetButtonUp("Horizontal"); //뗌
+        bool hDown = SayManager.instance.show ? false : Input.GetButtonDown("Horizontal"); //버튼 누름
+        bool hUp = SayManager.instance.show ? false : Input.GetButtonUp("Horizontal"); //뗌
 
         if (hDown || hUp)
             movingMan = true;
@@ -165,14 +166,14 @@ public class Player : MonoBehaviour
         Vector2 moveDir = new Vector2(horizontal, 0); // 좌우이동 적용
         rg.velocity = moveDir * Speed;
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, player.GetDir(), 3, LayerMask.GetMask("Objection"));
+        RaycastHit2D hitt = Physics2D.Raycast(transform.position, player.GetDir(), 3, LayerMask.GetMask("Objection"));
         obj = null;
-        if (hit.collider != null)
+        if (hitt.collider != null)
         {
-            obj = hit.collider.gameObject;
-            if (playerEquip.IsPlayerPutItem())
+            obj = hitt.collider.gameObject;
+            if (IsPlayerPutItem())
             {
-                if (GameObject.ReferenceEquals(obj, playerEquip.currentItem.gameObject))
+                if (GameObject.ReferenceEquals(obj, currentItem.gameObject))
                 {
                     obj = null;
                 }
