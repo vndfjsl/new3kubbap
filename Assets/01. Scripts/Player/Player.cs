@@ -289,8 +289,8 @@ public class Player : MonoBehaviour
     {
         if (currentItem != null) // µå¶ø
         {
-            inven.ItemDrop(currentItem);
-            Inventory2.DeleteItem(currentItem);
+            inven.DeleteItem(currentItem);
+            // Inventory2.DeleteItem(currentItem);
             DropItem();
         }
 
@@ -300,7 +300,7 @@ public class Player : MonoBehaviour
         if (item != null)
         {
             Debug.Log("Get Item");
-            inven.ItemGet(item);
+            inven.InsertItem(item);
             EquipItem(item);
         }
     }

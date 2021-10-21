@@ -32,12 +32,12 @@ public class Inventory : MonoBehaviour
 
     }
 
-    public static void InsertItem(Item item)
+    public void InsertItem(Item item)
     {
 
     }
 
-    public static void DeleteItem(Item item)
+    public void DeleteItem(Item item)
     {
 
     }
