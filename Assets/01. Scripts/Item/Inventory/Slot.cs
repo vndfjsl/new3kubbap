@@ -26,7 +26,7 @@ public class Slot : MonoBehaviour
     public void SetItem(Item item)
     {
         isEmpty = false;
-        sr.sprite = item.GetSprite();
+       // sr.sprite = item.GetSprite();
     }
 
     public void RemoveItem()

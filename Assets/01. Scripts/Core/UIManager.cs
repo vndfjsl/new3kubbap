@@ -18,31 +18,31 @@ public class UIManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (Inventory.IsOpen)
+          //  if (Inventory.IsOpen)
             {
                 Inventory.CloseInventory();
             }
-            else
-            {
-                Inventory.OpenInventory();
-            }
+            //else
+            //{
+            //    Inventory.OpenInventory();
+            //}
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             Debug.Log("inven effect left");
-            if (Inventory.IsOpen)
+           // if (Inventory.IsOpen)
             {
-                Inventory.instance.LeftSelectItem();
+             //   Inventory.instance.LeftSelectItem();
             }
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             Debug.Log("inven effect right");
-            if (Inventory.IsOpen)
+           // if (Inventory.IsOpen)
             {
-                Inventory.instance.RightSelectItem();
+                //Inventory.instance.RightSelectItem();
             }
         }
     }
@@ -51,9 +51,9 @@ public class UIManager : MonoBehaviour
     {
         for (int i = 0; i < 5; i++)
         {
-            inventoryItems[i].SetActive(isItemGet[i]);
+           // inventoryItems[i].SetActive(isItemGet[i]);
         }
 
-        playerInventory.ViewIntentory();
+        // playerInventory.ViewIntentory();
     }
 }

@@ -14,7 +14,7 @@ public class SayManager : MonoBehaviour
     public Animator sayPanel;
     public TypingEffect say;
     public GameObject sObj;
-    public bool show;
+    public bool isTextReading;
     public int sayIndex;
     Dictionary<int, string[]> sayData;
 
@@ -56,7 +56,7 @@ public class SayManager : MonoBehaviour
 
         if (sayData == null)
         {
-            show = false;
+            isTextReading = false;
             sayIndex = 0;
             return;
         }
@@ -70,7 +70,7 @@ public class SayManager : MonoBehaviour
             say.setMsg(sayData);
         }
 
-        show = true;
+        isTextReading = true;
         sayIndex++;
     }
 
@@ -79,6 +79,6 @@ public class SayManager : MonoBehaviour
         sObj = scanObj;
         objData objData = sObj.GetComponent<objData>();
         Say(objData.id, objData.npc);
-        sayPanel.SetBool("isShow", show);
+        sayPanel.SetBool("isShow", isTextReading);
     }
 }

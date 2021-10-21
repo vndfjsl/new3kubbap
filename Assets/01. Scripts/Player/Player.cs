@@ -5,10 +5,18 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    private float Speed = 15;//이동에 필요한
+    public enum PlayerHeartState // 플레이어의 심리
+    {
+        Normal,
+        Unstable,
+        Fear,
+        Revenge
+    }
 
-    private Rigidbody2D rg;//이동에 필요한
-    private float horizontal;//이동에 필요한
+    private float moveSpeed = 15f;
+
+    private Rigidbody2D rigid;
+    private float inputX;
     private bool movingMan;//이동에 필요한
     private Vector3 dirVec;//이동에 필요한
     private GameObject Obj;
@@ -39,17 +47,11 @@ public class Player : MonoBehaviour
 
     public Action<bool> turnAction; // Inventory에서 쓰는 델리게이트
 
-    public enum PlayerState
-    {
-        Normal,//평온한 상태 캔슬가능 속도 15
-        Unstable,//불안한 상태 캔슬가능 속도 12
-        Fear,//공포 상태 ㅂㄱㄴ 속도8 
-        Revenge//복수심 상태 ㅂㄱㄴ 속도 12 행동 직후 속도 5 3초간 이때만 공격력 강 해 진 다 돌격해
-    }
+    
 
     private void Awake()
     {
-        rg = GetComponent<Rigidbody2D>();
+        rigid = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         ws = new WaitForSeconds(delay);
 
@@ -64,44 +66,42 @@ public class Player : MonoBehaviour
         };
     }
 
-    public PlayerState state = PlayerState.Normal;
-
-    private void OnEnable()
-    {
-        state = PlayerState.Normal;
-    }
+    public PlayerHeartState state = PlayerHeartState.Normal;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        state = PlayerHeartState.Normal;
     }
 
     // Update is called once per frame
     void Update()
     {
-        horizontal = SayManager.instance.show ? 0 : Input.GetAxisRaw("Horizontal");
+        if(!SayManager.instance.isTextReading)
+        {
+            inputX = Input.GetAxisRaw("Horizontal");
+        }
 
-        bool hDown = SayManager.instance.show ? false : Input.GetButtonDown("Horizontal"); //버튼 누름
-        bool hUp = SayManager.instance.show ? false : Input.GetButtonUp("Horizontal"); //뗌
+        bool hDown = SayManager.instance.isTextReading ? false : Input.GetButtonDown("Horizontal"); //버튼 누름
+        bool hUp = SayManager.instance.isTextReading ? false : Input.GetButtonUp("Horizontal"); //뗌
 
         if (hDown || hUp)
             movingMan = true;
         // movingMan = (hDown || hUp) ? true : false;
 
         int lastDir = dir ? 1 : -1; // 입력받기전 마지막으로 받은 입력
-        if (horizontal != lastDir && horizontal != 0) // 과 방금입력이다르면 == 회전
+        if (inputX != lastDir && inputX != 0) // 과 방금입력이다르면 == 회전
         {
             TurnEvent();
         }
 
-        if (horizontal == -1 && hDown)
+        if (inputX == -1 && hDown)
         {
             dirVec = Vector3.left;
             dir = false;
         }
 
-        else if (horizontal == 1 && hDown)
+        else if (inputX == 1 && hDown)
         {
             dirVec = Vector3.right;
             dir = true;
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
         //Debug.Log(Obj);
         if (Input.GetButtonDown("Jump") && Obj != null)
         {
-            Action(Obj); // 물체를 감지하면 대사가 나오는 조건문
+         //   Action(Obj); // 물체를 감지하면 대사가 나오는 조건문
             Debug.Log("왜안돼");
         }
 
@@ -146,25 +146,25 @@ public class Player : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Debug.DrawRay(rg.position, dirVec * 3, new Color(1, 0, 1));
-        RaycastHit2D[] hit = Physics2D.RaycastAll(rg.position, dirVec, 3, LayerMask.GetMask("Objection"));
+        Debug.DrawRay(rigid.position, dirVec * 3, new Color(1, 0, 1));
+        RaycastHit2D[] hit = Physics2D.RaycastAll(rigid.position, dirVec, 3, LayerMask.GetMask("Objection"));
         for(int i = 0; i < hit.Length; i++)
         {
             //if(GameManager.Instance.playerEquip.currentItem == null)
             {
                 Obj = hit[i].collider.gameObject;
-                break;
+       //         break;
             }
             //if( !GameObject.ReferenceEquals( hit[i].collider.gameObject, GameManager.Instance.playerEquip.currentItem.gameObject))
             {
-                Obj = hit[i].collider.gameObject;
-                break;
+         //       Obj = hit[i].collider.gameObject;
+         //       break;
             }
         }
         
 
-        Vector2 moveDir = new Vector2(horizontal, 0); // 좌우이동 적용
-        rg.velocity = moveDir * Speed;
+        Vector2 moveDir = new Vector2(inputX, 0); // 좌우이동 적용
+        rigid.velocity = moveDir * moveSpeed;
 
         RaycastHit2D hitt = Physics2D.Raycast(transform.position, player.GetDir(), 3, LayerMask.GetMask("Objection"));
         obj = null;
@@ -197,7 +197,7 @@ public class Player : MonoBehaviour
     public void SlowMove(bool isSlow)
     {
         this.isSlow = isSlow;
-        Speed = isSlow ? Speed * divideSlowSpeed : Speed / divideSlowSpeed;
+        moveSpeed = isSlow ? moveSpeed * divideSlowSpeed : moveSpeed / divideSlowSpeed;
     }
 
     
@@ -214,16 +214,16 @@ public class Player : MonoBehaviour
             yield return ws;
             switch (state)
             {
-                case PlayerState.Normal:
+                case PlayerHeartState.Normal:
                     break;
-                case PlayerState.Unstable:
-                    Speed = 12;
+                case PlayerHeartState.Unstable:
+                    moveSpeed = 12;
                     break;
-                case PlayerState.Fear:
-                    Speed = 8;
+                case PlayerHeartState.Fear:
+                    moveSpeed = 8;
                     break;
-                case PlayerState.Revenge:
-                    Speed = 12;
+                case PlayerHeartState.Revenge:
+                    moveSpeed = 12;
                     break;
                 default:
                     break;

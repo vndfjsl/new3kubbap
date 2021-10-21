@@ -18,10 +18,10 @@ public class DropItem : MonoBehaviour
         if (collision.gameObject.CompareTag("GROUND"))
         {
             rigid.gravityScale = 0;
-            if (!isGroundTouch)
+     //       if (!isGroundTouch)
             {
                 rigid.velocity = Vector2.zero;
-                isGroundTouch = true;
+       //         isGroundTouch = true;
             }
         }
     }
