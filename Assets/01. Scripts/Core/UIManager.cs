@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager instance;
+
+    private void Awake()
+    {
+        if (instance != null) return;
+        instance = this;
+    }
+
+
+    public CanvasGroup dialoguePanel;
+
     // Start is called before the first frame update
     void Start()
     {

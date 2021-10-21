@@ -15,4 +15,12 @@ public class Player : MonoBehaviour
     {
         
     }
+
+    public void Action(GameObject scanObj)
+    {
+        //sObj = scanObj;
+        //objData objData = sObj.GetComponent<objData>();
+        //Say(objData.id, objData.npc);
+        //sayPanel.SetBool("isShow", show);
+    }
 }

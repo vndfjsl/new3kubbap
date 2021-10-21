@@ -2,19 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class Inventory : MonoBehaviour
 {
-    public static GameManager instance;
-
-    private void Awake()
-    {
-        if (instance != null) return;
-        instance = this;
-    }
-
-
-    public Player player;
-
+    public List<Item> currentItemList = new List<Item>();
 
     // Start is called before the first frame update
     void Start()
