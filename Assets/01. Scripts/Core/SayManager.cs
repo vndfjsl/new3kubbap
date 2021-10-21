@@ -25,12 +25,20 @@ public class SayManager : MonoBehaviour
         GeData();
     }
 
-    // Update is called once per frame
-    void Update()
+    void GeData()
     {
-        
+        sayData.Add(1, new string[] { "테스트 대사입니다.", "변하지 않는 마음이라는 건", "권태를 면하는 단순한 방법" });
+        sayData.Add(10, new string[] { "" });
     }
 
+    public string GetSay(int id, int sayIndex)
+    {
+        if (sayIndex == sayData[id].Length)
+            return null;
+
+        else
+            return sayData[id][sayIndex];
+    }
     public void Say(int id, bool npc)
     {
         string sayData = "";
