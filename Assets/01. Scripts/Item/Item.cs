@@ -4,15 +4,38 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public ItemType type;
+    
+    private SpriteRenderer sr;
+
+    private void Awake()
     {
         
+        sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public Sprite GetItemSprite()
     {
-        
+        return sr.sprite;
+    }
+
+    public virtual void DropItem(Vector2 pos)
+    {
+
+    }
+
+    public virtual void UseItem()
+    {
+
+    }
+
+    public virtual void GetItem()
+    {
+
+    }
+
+    public virtual void Save(bool getItem)
+    {
+
     }
 }
