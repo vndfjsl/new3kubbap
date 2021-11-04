@@ -5,30 +5,27 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-
-    public static GameManager Instance
-    {
-        get { return instance; }
-    }
+    public static GameManager Instance { get { return instance; } }
 
     private void Awake()
     {
         if (instance != null) return;
         instance = this;
+
+        TextAsset dJson = Resources.Load("dialogText") as TextAsset;
     }
 
-    public Player player;
+    private float timeScale;
+    public static float TimeScale
+    {
+        get { return instance.timeScale; }
+        set { instance.timeScale = Mathf.Clamp(value, 0, 1); }
+    }
 
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        TimeScale = 1;
     }
 }

@@ -14,7 +14,7 @@ public class SayManager : MonoBehaviour
     public Animator sayPanel;
     public TypingEffect say;
     public GameObject sObj;
-    public bool isTextReading;
+    public bool isTextReading; // GameManager.TimeScale로 교체 필요
     public int sayIndex;
     Dictionary<int, string[]> sayData;
 
