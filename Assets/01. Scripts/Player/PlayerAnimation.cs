@@ -7,7 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rigid;
     private Animator anim;
 
-    private int hashSpeed = Animator.StringToHash("speed"); // 나중에 만들어주자
+    private int hashSpeed = Animator.StringToHash("speed");
+    private int hashIsWalk = Animator.StringToHash("isWalk");
 
     private void Awake()
     {
@@ -18,11 +19,18 @@ public class PlayerAnimation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        SetSpeed();
+    }
+
+    private void SetSpeed()
+    {
         anim.SetFloat(hashSpeed, Mathf.Abs(rigid.velocity.x));
+        anim.SetBool(hashIsWalk, rigid.velocity.x != 0 ? true : false);
     }
 }

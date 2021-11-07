@@ -32,7 +32,6 @@ public abstract class Item : MonoBehaviour, IItem
     {
         isGround = false;
         rigid.bodyType = RigidbodyType2D.Kinematic;
-        RotateOrigin();
     }
 
     public virtual void Drop(Vector3 playerPos)
@@ -47,7 +46,7 @@ public abstract class Item : MonoBehaviour, IItem
         rigid.gravityScale = 1f;
     }
 
-    protected void RotateOrigin()
+    public void RotateOrigin()
     {
         gameObject.transform.localRotation = Quaternion.Euler(originRotation);
     }

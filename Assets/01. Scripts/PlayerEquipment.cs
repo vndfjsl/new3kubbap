@@ -55,12 +55,10 @@ public class PlayerEquipment : MonoBehaviour
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
                 equipItem = itemObj;
                 equipItem.Get();
-                Debug.Log("1 : " + equipItem.transform.localEulerAngles.z);
-                // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
-                bool dir = move.GetFront().x > 0 ? true : false;
 
-                // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
-                bool dir2 = equipItem.transform.localScale.x > 0 ? true : false;
+                bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
+
+                bool dir2 = equipItem.transform.localScale.x > 0 ? true : false; // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
 
                 if (dir != dir2)
                 {
@@ -68,13 +66,13 @@ public class PlayerEquipment : MonoBehaviour
                     scale.x *= -1;
                     equipItem.transform.localScale = scale;
                 }
-                Debug.Log("2 : " + equipItem.transform.localEulerAngles.z);
-                // 나뭇가지가 xFlip false = 오른쪽 xFlip true = 왼쪽
 
-                // 인벤토리에 장착아이템 넣기
-                MoveHandPos(); // 손에 들어
-                itemObj.transform.parent = handTrm;
+                // 인벤토리에 장착아이템 넣기 : TODO
 
+                // 손에 드는과정
+                itemObj.transform.parent = handTrm; // 회전하기 전에 parent를 바꿔줘야 각도맞게들려짐
+                equipItem.RotateOrigin();
+                MoveHandPos();
             }
         }
     }
