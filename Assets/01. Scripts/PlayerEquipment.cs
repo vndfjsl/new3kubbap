@@ -7,6 +7,7 @@ public class PlayerEquipment : MonoBehaviour
     private PlayerInput input; // from outer
     private PlayerMove move;
     private ObjSensor sensor;
+    public Inventory inventory;
 
     public Item equipItem; // to outer
     public bool isEquipItem = false;
@@ -55,6 +56,7 @@ public class PlayerEquipment : MonoBehaviour
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
                 equipItem = itemObj;
                 equipItem.Get();
+                inventory.AddItem(equipItem);
 
                 bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
 

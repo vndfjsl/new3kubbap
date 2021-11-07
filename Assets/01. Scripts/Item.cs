@@ -4,14 +4,15 @@ using UnityEngine;
 
 public abstract class Item : MonoBehaviour, IItem
 {
-    // public SpriteRenderer sr; // sr.flipX != player.flipX - > rotate
     public Transform handleTrm;
     public bool isGround;
 
     protected Rigidbody2D rigid;
-    
-
     public Vector3 originRotation;
+
+    // extern
+    public string itemName;
+    public Sprite itemImage;
 
     protected void Awake()
     {
