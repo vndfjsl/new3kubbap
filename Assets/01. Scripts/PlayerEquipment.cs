@@ -56,7 +56,8 @@ public class PlayerEquipment : MonoBehaviour
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
                 equipItem = itemObj;
                 equipItem.Get();
-                inventory.AddItem(equipItem);
+
+                inventory.AddItem(equipItem); // 인벤토리에 장착아이템 넣기.
 
                 bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
 
@@ -69,7 +70,6 @@ public class PlayerEquipment : MonoBehaviour
                     equipItem.transform.localScale = scale;
                 }
 
-                // 인벤토리에 장착아이템 넣기 : TODO
 
                 // 손에 드는과정
                 itemObj.transform.parent = handTrm; // 회전하기 전에 parent를 바꿔줘야 각도맞게들려짐
@@ -82,9 +82,11 @@ public class PlayerEquipment : MonoBehaviour
     private void DropItem()
     {
         Debug.Log("버리는중");
+
+        inventory.RemoveItem(equipItem);
+
         equipItem.Drop(transform.position);
         equipItem = null;
-        // 인벤토리에서 장착아이템 버리기
         
 
     }

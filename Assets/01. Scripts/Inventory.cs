@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> items;
-
+    public List<Item> itemNumbers;
     public Slot[] slots;
 
-    private void Awake()
-    {
-    }
-
-    // Start is called before the first frame update
     void Start()
     {
         slots = GetComponentsInChildren<Slot>();
@@ -23,25 +18,38 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < slots.Length; i++)
         {
-            slots[i].item = null;
+            slots[i].EmptySlot();
         }
 
-        for (int i=0; i<items.Count && i<slots.Length; i++)
+        for (int i = 0; i < itemNumbers.Count; i++)
         {
-            slots[i].item = items[i];
+            slots[itemNumbers[i].itemNumber].OnSlot(itemNumbers[i].itemImage);
         }
     }
 
-    public void AddItem(Item _item)
+    public void AddItem(Item item)
     {
-        if(items.Count < slots.Length)
+        if (itemNumbers.Count < slots.Length) // 먹은아이템개수 < 슬롯길이(가방크기)
         {
-            items.Add(_item);
+            itemNumbers.Add(item);
             InitSlot();
         }
         else
         {
             Debug.Log("Full Slot");
+        }
+    }
+
+    public void RemoveItem(Item item)
+    {
+        if (itemNumbers.Contains(item))
+        {
+            itemNumbers.Remove(item);
+            InitSlot();
+        }
+        else
+        {
+            Debug.Log("인벤토리에 버릴 게 없어");
         }
     }
 }

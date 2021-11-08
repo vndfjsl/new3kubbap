@@ -568,7 +568,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -605,6 +605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1df63c79f880b846a7846d3eee45bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotItem: {fileID: 0}
 --- !u!1 &199022223
 GameObject:
   m_ObjectHideFlags: 0
@@ -7492,7 +7493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91f900c70deb76f44bf51210da0d0151, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items: []
+  itemNumbers: []
   slots: []
 --- !u!1 &823157009
 GameObject:
@@ -7915,7 +7916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -7952,6 +7953,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1df63c79f880b846a7846d3eee45bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotItem: {fileID: 0}
 --- !u!1 &1045381956
 GameObject:
   m_ObjectHideFlags: 0
@@ -8167,7 +8169,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8204,6 +8206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1df63c79f880b846a7846d3eee45bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotItem: {fileID: 0}
 --- !u!1 &1061677180
 GameObject:
   m_ObjectHideFlags: 0
@@ -8928,7 +8931,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -8965,6 +8968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1df63c79f880b846a7846d3eee45bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotItem: {fileID: 0}
 --- !u!1001 &1230717992
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8979,7 +8983,11 @@ PrefabInstance:
     - target: {fileID: 599301908723100330, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
       propertyPath: itemImage
       value: 
-      objectReference: {fileID: 21300000, guid: e851e89857506a74bb1db27c2d143f5a, type: 3}
+      objectReference: {fileID: 0}
+    - target: {fileID: 599301908723100330, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
+      propertyPath: itemNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 599301908723100333, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -9024,6 +9032,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 599301908723100334, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ea9d654a8193a9e418d4904c30259dba, type: 3}
     - target: {fileID: 599301908723100335, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
       propertyPath: m_Name
       value: branch (1)
@@ -11341,7 +11353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -11378,6 +11390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1df63c79f880b846a7846d3eee45bc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slotItem: {fileID: 0}
 --- !u!1 &2000428607
 GameObject:
   m_ObjectHideFlags: 0
@@ -11927,7 +11940,7 @@ PrefabInstance:
     - target: {fileID: 599301908723100330, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
       propertyPath: itemImage
       value: 
-      objectReference: {fileID: 21300000, guid: e851e89857506a74bb1db27c2d143f5a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 599301908723100333, guid: f3a65b8ab704027448a7098d77cd5998, type: 3}
       propertyPath: m_RootOrder
       value: 1

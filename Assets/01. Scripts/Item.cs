@@ -11,13 +11,13 @@ public abstract class Item : MonoBehaviour, IItem
     public Vector3 originRotation;
 
     // extern
-    public string itemName;
-    public Sprite itemImage;
+    public int itemNumber;
+    [HideInInspector] public Sprite itemImage;
 
     protected void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-
+        itemImage = GetComponent<SpriteRenderer>().sprite;
         rigid.velocity = Vector2.zero;
         rigid.bodyType = RigidbodyType2D.Kinematic;
         isGround = true;
