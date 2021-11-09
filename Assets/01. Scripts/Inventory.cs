@@ -14,6 +14,12 @@ public class Inventory : MonoBehaviour
         InitSlot();
     }
 
+    public void OpenInven()
+    {
+        bool isOpen = (gameObject.activeSelf) ? true : false;
+        gameObject.SetActive(!isOpen);
+    }
+
     private void InitSlot()
     {
         for (int i = 0; i < slots.Length; i++)

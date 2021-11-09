@@ -32,14 +32,22 @@ public class PlayerEquipment : MonoBehaviour
     {
         if (input.isGet)
         {
-            if (equipItem != null) // 아이템을 장착하고 계시면
+            Debug.Log(sensor.frontItems.Count);
+            if(equipItem == null || sensor.frontItems.Count != 0) // 장착중인 아이템이 없다면 || 앞에 아이템이 있다면(아이템끼면 기본이 1)
             {
-                // 땅에 드롭하는코드
-                DropItem();
+                GetItem(); // get
                 return;
             }
+            else if(equipItem != null)// 아이템을 장착하고 계시면
+            {
+                DropItem(); // drop
+            }
+        }
 
-            GetItem();
+        if(input.isOpenInven)
+        {
+            inventory.OpenInven();
+            return;
         }
     }
 
@@ -47,28 +55,41 @@ public class PlayerEquipment : MonoBehaviour
     {
         if (sensor.frontItems.Count > 0)
         {
-            Debug.Log("획득중");
-
             // 앞에있는 아이템 획득
             for (int i = 0; i < sensor.frontItems.Count; i++)
             {
                 Item itemObj = sensor.frontItems[i];
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
-                equipItem = itemObj;
-                equipItem.Get();
 
-                inventory.AddItem(equipItem); // 인벤토리에 장착아이템 넣기.
-
-                bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
-
-                bool dir2 = equipItem.transform.localScale.x > 0 ? true : false; // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
-
-                if (dir != dir2)
+                if(equipItem == null) // 이미 먹은 아이템이 없다면
                 {
-                    Vector3 scale = equipItem.transform.localScale;
-                    scale.x *= -1;
-                    equipItem.transform.localScale = scale;
+                    equipItem = itemObj;
+                    equipItem.Get();
+
+                    inventory.AddItem(equipItem); // 인벤토리에 장착아이템 넣기.
+
+                    bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
+
+                    bool dir2 = equipItem.transform.localScale.x > 0 ? true : false; // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
+
+                    if (dir != dir2)
+                    {
+                        Vector3 scale = equipItem.transform.localScale;
+                        scale.x *= -1;
+                        equipItem.transform.localScale = scale;
+                    }
                 }
+                else // 있다면
+                {
+                    inventory.AddItem(itemObj); // 인벤토리에 추가만 해준다.
+                    itemObj.gameObject.SetActive(false); // 인벤토리에 넣으면 게임상에는 존재하지 않기때문에 끄고 나중에 인벤에서꺼낼때 다시킨다 + Rotate
+
+                    // 꺼도 아마 손에서는 잔류할거임. 이거맞나??
+                }
+
+                
+
+                
 
 
                 // 손에 드는과정
@@ -81,8 +102,6 @@ public class PlayerEquipment : MonoBehaviour
 
     private void DropItem()
     {
-        Debug.Log("버리는중");
-
         inventory.RemoveItem(equipItem);
 
         equipItem.Drop(transform.position);

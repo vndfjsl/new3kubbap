@@ -9,6 +9,7 @@ public abstract class Item : MonoBehaviour, IItem
 
     protected Rigidbody2D rigid;
     public Vector3 originRotation;
+    public LayerMask whatIsEquipItem;
 
     // extern
     public int itemNumber;
@@ -26,19 +27,20 @@ public abstract class Item : MonoBehaviour, IItem
     protected void Start()
     {
         originRotation = transform.rotation.eulerAngles;
-        Debug.Log(originRotation.z);
     }
 
     public virtual void Get()
     {
         isGround = false;
         rigid.bodyType = RigidbodyType2D.Kinematic;
+        gameObject.layer = LayerMask.NameToLayer("EQUIPITEM");
     }
 
     public virtual void Drop(Vector3 playerPos)
     {
         rigid.bodyType = RigidbodyType2D.Dynamic;
         gameObject.transform.parent = null;
+        gameObject.layer = default;
         // gameObject.transform.position = playerPos + new Vector3(0,6f,0);
 
         RotateOrigin();
