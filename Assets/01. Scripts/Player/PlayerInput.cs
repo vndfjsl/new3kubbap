@@ -9,6 +9,7 @@ public class PlayerInput : MonoBehaviour
     public bool isGet { get; private set; }
     public bool isUse { get; private set; }
     public bool isOpenInven { get; private set; }
+    public bool isMouseTouch { get; private set; }
 
     void Update()
     {
@@ -18,6 +19,7 @@ public class PlayerInput : MonoBehaviour
             isGet = false;
             isUse = false;
             isOpenInven = false;
+            isMouseTouch = false;
             return;
         }
 
@@ -25,5 +27,6 @@ public class PlayerInput : MonoBehaviour
         isGet = Input.GetButtonDown("Get");
         isUse = Input.GetButtonDown("Use");
         isOpenInven = Input.GetButtonDown("Inven");
+        isMouseTouch = Input.GetMouseButtonDown(0);
     }
 }

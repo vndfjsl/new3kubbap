@@ -54,6 +54,7 @@ public class PlayerMove : MonoBehaviour
         #region ¿Ãµø
         float speed = isSlow ? slowSpeed : moveSpeed;
         rigid.velocity = new Vector2(xMove * speed, rigid.velocity.y);
+        // equip.inventory.FollowPlayer(Camera.main.transform.position);
 
         #endregion
     }

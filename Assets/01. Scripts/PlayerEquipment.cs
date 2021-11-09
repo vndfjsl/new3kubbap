@@ -10,9 +10,8 @@ public class PlayerEquipment : MonoBehaviour
     public Inventory inventory;
 
     public Item equipItem; // to outer
-    public bool isEquipItem = false;
 
-    public Transform handTrm; // inner
+    [SerializeField] private Transform handTrm; // inner
 
     private void Awake()
     {
@@ -33,6 +32,12 @@ public class PlayerEquipment : MonoBehaviour
         if (input.isGet)
         {
             Debug.Log(sensor.frontItems.Count);
+
+            foreach (Item item in sensor.frontItems)
+            {
+                Debug.Log(item.gameObject.name);
+            }
+
             if(equipItem == null || sensor.frontItems.Count != 0) // 장착중인 아이템이 없다면 || 앞에 아이템이 있다면(아이템끼면 기본이 1)
             {
                 GetItem(); // get
@@ -51,6 +56,43 @@ public class PlayerEquipment : MonoBehaviour
         }
     }
 
+    public void EquipItem(Item item)
+    {
+        if(equipItem != null) // 임시
+        {
+            equipItem.gameObject.SetActive(false);
+            equipItem = null;
+        }
+
+        equipItem = item;
+        equipItem.gameObject.SetActive(true);
+        equipItem.Get();
+        MoveHandPos();
+
+        RotateItem(); // 바로아래스킈립트
+    }
+
+    private void RotateItem()
+    {
+
+
+        if (equipItem == null) return;
+
+        bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
+
+        bool dir2 = equipItem.transform.localScale.x > 0 ? true : false; // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
+
+        if (dir != dir2)
+        {
+            Vector3 scale = equipItem.transform.localScale;
+            scale.x *= -1;
+            equipItem.transform.localScale = scale;
+        }
+
+        equipItem.transform.parent = handTrm; // 회전하기 전에 parent를 바꿔줘야 각도맞게들려짐
+        equipItem.RotateOrigin();
+    }
+
     private void GetItem()
     {
         if (sensor.frontItems.Count > 0)
@@ -61,23 +103,11 @@ public class PlayerEquipment : MonoBehaviour
                 Item itemObj = sensor.frontItems[i];
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
 
-                if(equipItem == null) // 이미 먹은 아이템이 없다면
+                if(equipItem == null) // 장착 아이템이 없다면
                 {
-                    equipItem = itemObj;
+                    EquipItem(itemObj);
                     equipItem.Get();
-
                     inventory.AddItem(equipItem); // 인벤토리에 장착아이템 넣기.
-
-                    bool dir = move.GetFront().x > 0 ? true : false; // 플레이어가 ->을 보고있느냐 ? 예 : 아니오
-
-                    bool dir2 = equipItem.transform.localScale.x > 0 ? true : false; // 아이템=기본 오른쪽, ->을 보고있느냐 ? 예 : 아니오
-
-                    if (dir != dir2)
-                    {
-                        Vector3 scale = equipItem.transform.localScale;
-                        scale.x *= -1;
-                        equipItem.transform.localScale = scale;
-                    }
                 }
                 else // 있다면
                 {
@@ -87,14 +117,7 @@ public class PlayerEquipment : MonoBehaviour
                     // 꺼도 아마 손에서는 잔류할거임. 이거맞나??
                 }
 
-                
-
-                
-
-
                 // 손에 드는과정
-                itemObj.transform.parent = handTrm; // 회전하기 전에 parent를 바꿔줘야 각도맞게들려짐
-                equipItem.RotateOrigin();
                 MoveHandPos();
             }
         }
@@ -106,8 +129,6 @@ public class PlayerEquipment : MonoBehaviour
 
         equipItem.Drop(transform.position);
         equipItem = null;
-        
-
     }
 
     private void MoveHandPos()
@@ -117,5 +138,12 @@ public class PlayerEquipment : MonoBehaviour
         equipItem.transform.position = handTrm.position;
         Vector3 moveVec = handTrm.position - equipItem.handleTrm.position;
         equipItem.transform.position += moveVec;
+    }
+
+    public bool IsEquipItem(Item item)
+    {
+        if (equipItem == null) return true; // 든게없으면 바꿀수있게.
+        Debug.Log(item);
+        return (equipItem.itemNumber != item.itemNumber) ? true : false;
     }
 }

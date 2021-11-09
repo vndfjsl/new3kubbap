@@ -5,13 +5,42 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    public List<Item> itemNumbers;
+    public List<Item> items;
     public Slot[] slots;
+
+    private float doubleClickOKTime = 0.3f;
+    private bool isOneClick = false;
+    private float clickRememberTime;
 
     void Start()
     {
         slots = GetComponentsInChildren<Slot>();
         InitSlot();
+        OpenInven();
+    }
+
+    private void Update()
+    {
+        if(isOneClick)
+        {
+            clickRememberTime += Time.deltaTime;
+        }
+
+        //Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //Collider2D hit = Physics2D.OverlapCircle(mouse, 0.5f);
+
+        //Debug.Log(hit);
+
+        if (!isOneClick) // <- 더블클릭
+        {
+            isOneClick = true;
+            clickRememberTime = Time.time + doubleClickOKTime;
+        }
+        else if (clickRememberTime > Time.time)
+        {
+            isOneClick = false;
+        }
     }
 
     public void OpenInven()
@@ -27,17 +56,18 @@ public class Inventory : MonoBehaviour
             slots[i].EmptySlot();
         }
 
-        for (int i = 0; i < itemNumbers.Count; i++)
+        for (int i = 0; i < items.Count; i++)
         {
-            slots[itemNumbers[i].itemNumber].OnSlot(itemNumbers[i].itemImage);
+            slots[items[i].itemNumber].OnSlot(items[i]);
         }
     }
 
     public void AddItem(Item item)
     {
-        if (itemNumbers.Count < slots.Length) // 먹은아이템개수 < 슬롯길이(가방크기)
+        Debug.Log("Add");
+        if (items.Count < slots.Length) // 먹은아이템개수 < 슬롯길이(가방크기)
         {
-            itemNumbers.Add(item);
+            items.Add(item);
             InitSlot();
         }
         else
@@ -48,9 +78,9 @@ public class Inventory : MonoBehaviour
 
     public void RemoveItem(Item item)
     {
-        if (itemNumbers.Contains(item))
+        if (items.Contains(item))
         {
-            itemNumbers.Remove(item);
+            items.Remove(item);
             InitSlot();
         }
         else
