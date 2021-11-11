@@ -531,8 +531,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1082255535}
   m_Bounds:
-    m_Center: {x: 2.4543693, y: 3.9617772, z: 0}
-    m_Extent: {x: 0.21446514, y: 0.108222485, z: 0}
+    m_Center: {x: 0.004358545, y: 0.0017758384, z: 0}
+    m_Extent: {x: 0.21446516, y: 0.10822311, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &416409558
@@ -637,7 +637,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 0}
   equipItem: {fileID: 0}
-  isEquipItem: 0
   handTrm: {fileID: 494178939}
 --- !u!114 &470811587
 MonoBehaviour:
@@ -832,8 +831,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1082255535}
   m_Bounds:
-    m_Center: {x: 0.002863869, y: -0.00000037252903, z: 0}
-    m_Extent: {x: 0.2071354, y: 0.16, z: 0}
+    m_Center: {x: 0.51054823, y: -0.15457267, z: 0}
+    m_Extent: {x: 0.21015798, y: 0.1685105, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &476531165
@@ -1758,8 +1757,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1082255535}
   m_Bounds:
-    m_Center: {x: 2.7299361, y: 3.6649997, z: 0}
-    m_Extent: {x: 0.099576116, y: 0.035000086, z: 0}
+    m_Center: {x: 0.30692142, y: -0.23665163, z: 0}
+    m_Extent: {x: 0.09741813, y: 0.06320516, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &989628540
@@ -3197,8 +3196,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1082255535}
   m_Bounds:
-    m_Center: {x: 2.7349994, y: 3.6749997, z: 0}
-    m_Extent: {x: 0.07500005, y: 0.07500005, z: 0}
+    m_Center: {x: 0.30945677, y: -0.24781293, z: 0}
+    m_Extent: {x: 0.08470251, y: 0.08312702, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &1768595032
@@ -3404,8 +3403,8 @@ MonoBehaviour:
   m_BoneTransforms:
   - {fileID: 1082255535}
   m_Bounds:
-    m_Center: {x: 2.4499993, y: 3.9403749, z: 0}
-    m_Extent: {x: 0.21000004, y: 0.0696249, z: 0}
+    m_Center: {x: 0.47914982, y: -0.11420882, z: 0}
+    m_Extent: {x: 0.19073784, y: 0.124985784, z: 0}
   m_UseBatching: 1
   m_AlwaysUpdate: 1
 --- !u!212 &1827392765
