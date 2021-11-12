@@ -24,5 +24,6 @@ public class StartController : MonoBehaviour
     public void SkipStartScene()
     {
         SceneManager.LoadScene(1);
+        Save.instace.stageNumber = 1;
     }
 }
