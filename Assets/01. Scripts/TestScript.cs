@@ -21,7 +21,6 @@ public class TestScript : MonoBehaviour
             {
                 Slot s = col.gameObject.GetComponent<Slot>();
                 if (s != null) s.OnMouseDown();
-                Debug.Log(col.gameObject.name);
             }
         }
     }

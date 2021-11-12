@@ -12,7 +12,7 @@ public class PlayerMove : MonoBehaviour
     public bool facingRight; // 외부로 내보낼것 // 초기 그림이 오른쪽을 보고있는가?
     public bool isSlow = false; // 느리게 걷고있는가?
     public float moveSpeed = 15f;
-    public float slowSpeed = 3f;
+    public float slowSpeed = 8f;
 
     
 
@@ -52,7 +52,10 @@ public class PlayerMove : MonoBehaviour
         #endregion
 
         #region 이동
-        float speed = isSlow ? slowSpeed : moveSpeed;
+
+        anim.SetSlow(input.isSlow ? true : false); // 그머냐 느리게이동애니메이션
+
+        float speed = input.isSlow ? slowSpeed : moveSpeed;
         rigid.velocity = new Vector2(xMove * speed, rigid.velocity.y);
         // equip.inventory.FollowPlayer(Camera.main.transform.position);
 
@@ -76,11 +79,6 @@ public class PlayerMove : MonoBehaviour
         {
             return transform.localScale.x > 0 ? transform.right * -1 : transform.right;
         }
-    }
-
-    public void SlowSpeed(bool slow)
-    {
-        isSlow = slow;
     }
 
     public void SetSpeed(float speed)

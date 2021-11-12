@@ -5,5 +5,5 @@ using UnityEngine;
 public class GameTextDataVO
 {
     public int version;
-    public List<string> list;
+    public List<DialogVO> list;
 }

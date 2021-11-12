@@ -67,9 +67,9 @@ public class PlayerEquipment : MonoBehaviour
         equipItem = item;
         equipItem.gameObject.SetActive(true);
         equipItem.Get();
-        MoveHandPos();
 
-        RotateItem(); // 바로아래스킈립트
+        RotateItem();
+        MoveHandPos();
     }
 
     private void RotateItem()
@@ -106,7 +106,6 @@ public class PlayerEquipment : MonoBehaviour
                 if(equipItem == null) // 장착 아이템이 없다면
                 {
                     EquipItem(itemObj);
-                    equipItem.Get();
                     inventory.AddItem(equipItem); // 인벤토리에 장착아이템 넣기.
                 }
                 else // 있다면
@@ -116,9 +115,6 @@ public class PlayerEquipment : MonoBehaviour
 
                     // 꺼도 아마 손에서는 잔류할거임. 이거맞나??
                 }
-
-                // 손에 드는과정
-                MoveHandPos();
             }
         }
     }
@@ -143,7 +139,6 @@ public class PlayerEquipment : MonoBehaviour
     public bool IsEquipItem(Item item)
     {
         if (equipItem == null) return true; // 든게없으면 바꿀수있게.
-        Debug.Log(item);
         return (equipItem.itemNumber != item.itemNumber) ? true : false;
     }
 }

@@ -7,8 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     private Rigidbody2D rigid;
     private Animator anim;
 
-    private int hashSpeed = Animator.StringToHash("speed");
     private int hashIsWalk = Animator.StringToHash("isWalk");
+    private int hashIsSlow = Animator.StringToHash("isSlow");
 
     private void Awake()
     {
@@ -30,7 +30,11 @@ public class PlayerAnimation : MonoBehaviour
 
     private void SetSpeed()
     {
-        anim.SetFloat(hashSpeed, Mathf.Abs(rigid.velocity.x));
         anim.SetBool(hashIsWalk, rigid.velocity.x != 0 ? true : false);
+    }
+
+    public void SetSlow(bool value)
+    {
+        anim.SetBool(hashIsSlow, value);
     }
 }
