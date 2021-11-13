@@ -11,6 +11,7 @@ public class PlayerInput : MonoBehaviour
     public bool isOpenInven { get; private set; }
     public bool isMouseTouch { get; private set; }
     public bool isSlow { get; private set; }
+    public bool isSkip { get; private set; }
 
     void Update()
     {
@@ -22,6 +23,7 @@ public class PlayerInput : MonoBehaviour
             isOpenInven = false;
             isMouseTouch = false;
             isSlow = false;
+            isSkip = false;
             return;
         }
 
@@ -31,5 +33,6 @@ public class PlayerInput : MonoBehaviour
         isOpenInven = Input.GetButtonDown("Inven");
         isMouseTouch = Input.GetMouseButtonDown(0);
         isSlow = Input.GetButton("Slow");
+        isSkip = Input.GetButtonDown("Skip");
     }
 }

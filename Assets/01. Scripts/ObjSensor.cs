@@ -23,18 +23,15 @@ public class ObjSensor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("플레이어와의 충돌 : " + collision.gameObject.name);
         Item i = collision.gameObject.GetComponent<Item>();
         if (i != null)
         {
-            Debug.Log("전방 아이템 발견 : " + collision.gameObject.name);
             frontItems.Add(i);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("플레이어와의 충돌 해제 : " + collision.gameObject.name);
         Item i = collision.gameObject.GetComponent<Item>();
         if (frontItems.Contains(i)) frontItems.Remove(i);
     }

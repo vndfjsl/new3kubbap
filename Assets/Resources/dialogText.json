@@ -4,7 +4,10 @@
         {
             "code":0,
             "text":[
-                {"icon":0, "msg":"아"}
+                {"icon":0, "msg":"TO THE MOON"},
+                {"icon":1, "msg":"GODGAME"},
+                {"icon":0, "msg":"BUT I DONT PLAY"}
+
             ]
         }
     ]

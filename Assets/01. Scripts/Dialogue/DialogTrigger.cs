@@ -21,7 +21,7 @@ public class DialogTrigger : MonoBehaviour
     {
         if (isRead) return;
 
-        if(collision.gameObject.CompareTag("Player"))
+        if(collision.gameObject.CompareTag("PLAYER"))
         {
             isRead = true;
             DialogManager.ShowDialog(dialogCode);
