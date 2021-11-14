@@ -31,7 +31,7 @@ public class PlayerEquipment : MonoBehaviour
     {
         if (input.isGet)
         {
-            Debug.Log(sensor.frontItems.Count);
+            Debug.Log(sensor.frontItems.Count); 
 
             foreach (Item item in sensor.frontItems)
             {
@@ -54,6 +54,7 @@ public class PlayerEquipment : MonoBehaviour
             inventory.OpenInven();
             return;
         }
+
     }
 
     public void EquipItem(Item item)

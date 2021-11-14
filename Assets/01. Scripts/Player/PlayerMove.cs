@@ -60,6 +60,8 @@ public class PlayerMove : MonoBehaviour
         // equip.inventory.FollowPlayer(Camera.main.transform.position);
 
         #endregion
+
+        
     }
 
     public void Flip()
