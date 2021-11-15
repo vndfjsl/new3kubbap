@@ -7,6 +7,7 @@ public class PlayerEquipment : MonoBehaviour
     private PlayerInput input; // from outer
     private PlayerMove move;
     private ObjSensor sensor;
+    private PlayerAnimation anim;
     public Inventory inventory;
 
     public Item equipItem; // to outer
@@ -18,6 +19,7 @@ public class PlayerEquipment : MonoBehaviour
         input = GetComponent<PlayerInput>();
         sensor = GetComponent<ObjSensor>();
         move = GetComponent<PlayerMove>();
+        anim = GetComponent<PlayerAnimation>();
     }
 
     // Start is called before the first frame update
@@ -32,7 +34,8 @@ public class PlayerEquipment : MonoBehaviour
         if (input.isUse)
         {
             Debug.Log("x 누름");
-
+            anim.SetUse(input.isUse ? true : false);
+            
             if(equipItem == null)
             {
                 Debug.Log("맨손입니다.");
