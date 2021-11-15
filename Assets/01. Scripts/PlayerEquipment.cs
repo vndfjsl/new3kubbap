@@ -38,6 +38,7 @@ public class PlayerEquipment : MonoBehaviour
             
             if(equipItem == null)
             {
+                GameManager.instance.col.HandFucntion(); // 여기서 없애는거 불러옴. 디버그 로그 잘 뜸 여기문제 아닌거같음
                 Debug.Log("맨손입니다.");
                 return;
             }

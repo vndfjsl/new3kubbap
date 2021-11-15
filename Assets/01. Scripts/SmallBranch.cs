@@ -24,6 +24,8 @@ public class SmallBranch : Item
 
     public override void Use()
     {
+        GameManager.Instance.col.isFired = true;
         Debug.Log("나뭇가지를 사용했다.");
+        base.Use();
     }
 }

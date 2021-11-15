@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
     }
 
     private float timeScale;
+    public PlayerColision col;
+    public PlayerMove move;
     public static float TimeScale
     {
         get { return instance.timeScale; }

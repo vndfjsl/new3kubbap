@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SmallAxe : Item
 {
-    private PlayerColision col;
     private WaitForSeconds ws;
     private float delay = 0.3f;
 
@@ -27,9 +26,10 @@ public class SmallAxe : Item
 
     public override void Use()
     {
-        if (col.isBroken == true) //처음 왼쪽 도끼질
+        if (GameManager.instance.col.isBroken == true) //처음 왼쪽 도끼질
+
         {
-            col.digCount++;
+            GameManager.instance.col.digCount++;
             StartCoroutine(hit());
             Debug.Log("!");
         }
@@ -50,8 +50,8 @@ public class SmallAxe : Item
 
     private IEnumerator hit() //빨게졌다가 돌아오는 피격 표현
     {
-        col.tree.GetComponent<SpriteRenderer>().color = Color.red;
+        GameManager.instance.col.tree.GetComponent<SpriteRenderer>().color = Color.red;
         yield return ws;
-        col.tree.GetComponent<SpriteRenderer>().color = Color.white;
+        GameManager.instance.col.tree.GetComponent<SpriteRenderer>().color = Color.white;
     }
 }
