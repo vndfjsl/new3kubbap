@@ -16,9 +16,8 @@ public class SmallNorigae : Item
         Debug.Log("노리개를 내려놓았다.");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Use()
     {
-
+        Debug.Log("노리개를 사용했다.");
     }
 }

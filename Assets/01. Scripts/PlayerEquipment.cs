@@ -29,6 +29,19 @@ public class PlayerEquipment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (input.isUse)
+        {
+            Debug.Log("x 누름");
+
+            if(equipItem == null)
+            {
+                Debug.Log("맨손입니다.");
+                return;
+            }
+            equipItem.Use();
+            return;
+        }
+
         if (input.isGet)
         {
             Debug.Log(sensor.frontItems.Count); 
@@ -47,6 +60,8 @@ public class PlayerEquipment : MonoBehaviour
             {
                 DropItem(); // drop
             }
+
+            return;
         }
 
         if(input.isOpenInven)
@@ -54,7 +69,6 @@ public class PlayerEquipment : MonoBehaviour
             inventory.OpenInven();
             return;
         }
-
     }
 
     public void EquipItem(Item item)

@@ -16,9 +16,8 @@ public class SmallAxe : Item
         Debug.Log("도끼를 내려놓았다.");
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Use()
     {
-
+        Debug.Log("도끼를 사용했다.");
     }
 }

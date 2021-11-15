@@ -63,4 +63,6 @@ public abstract class Item : MonoBehaviour, IItem
             rigid.bodyType = RigidbodyType2D.Kinematic;
         }
     }
+
+    public abstract void Use();
 }

@@ -21,4 +21,9 @@ public class SmallBranch : Item
     {
         
     }
+
+    public override void Use()
+    {
+        Debug.Log("나뭇가지를 사용했다.");
+    }
 }

@@ -6,4 +6,5 @@ public interface IItem
 {
     void Get();
     void Drop(Vector3 pos);
+    void Use();
 }
