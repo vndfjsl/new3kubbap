@@ -4,9 +4,9 @@
         {
             "code":0,
             "text":[
-                {"icon":0, "msg":"나무넨 ㅏ누마누마누나무"},
-                {"icon":1, "msg":"GODGAME"},
-                {"icon":0, "msg":"BUT I DONT PLAY"}
+                {"msg":"나무넨 ㅏ누마누마누나무"},
+                {"msg":"GODGAME"},
+                {"msg":"BUT I DONT PLAY"}
 
             ]
         }

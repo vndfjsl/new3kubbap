@@ -34,15 +34,16 @@ public class PlayerEquipment : MonoBehaviour
         if (input.isUse)
         {
             Debug.Log("x 누름");
-            anim.SetUse(input.isUse ? true : false);
-            
-            if(equipItem == null)
+            StartCoroutine(UseOnOff());
+
+            if (equipItem == null)
             {
                 GameManager.instance.col.HandFucntion(); // 여기서 없애는거 불러옴. 디버그 로그 잘 뜸 여기문제 아닌거같음
                 Debug.Log("맨손입니다.");
                 return;
             }
             equipItem.Use();
+
             return;
         }
 
@@ -73,6 +74,13 @@ public class PlayerEquipment : MonoBehaviour
             inventory.OpenInven();
             return;
         }
+    }
+
+    IEnumerator UseOnOff()
+    {
+        anim.SetUse(true);
+        yield return new WaitForSeconds(1.5f);
+        anim.SetUse(false);
     }
 
     public void EquipItem(Item item)
