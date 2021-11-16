@@ -6,6 +6,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     private Rigidbody2D rigid;
     private Animator anim;
+    private PlayerColision col;
 
     private int hashIsWalk = Animator.StringToHash("isWalk");
     private int hashIsSlow = Animator.StringToHash("isSlow");
@@ -19,6 +20,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        col = GetComponent<PlayerColision>();
     }
 
     // Update is called once per frame
@@ -44,6 +46,7 @@ public class PlayerAnimation : MonoBehaviour
 
     public void WaterAction(bool value)
     {
+        col.getWater = value;
         for(int i=0; i<2; i++)
         {
             waterSprites[i].color = new Color(1, 1, 1, value ? 1 : 0);

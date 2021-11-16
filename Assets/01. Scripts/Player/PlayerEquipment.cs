@@ -9,6 +9,7 @@ public class PlayerEquipment : MonoBehaviour
     private ObjSensor sensor;
     private PlayerAnimation anim;
     public Inventory inventory;
+    private PlayerColision col;
 
     public Item equipItem; // to outer
 
@@ -20,6 +21,7 @@ public class PlayerEquipment : MonoBehaviour
         sensor = GetComponent<ObjSensor>();
         move = GetComponent<PlayerMove>();
         anim = GetComponent<PlayerAnimation>();
+        col = GetComponent<PlayerColision>();
     }
 
     // Start is called before the first frame update
@@ -31,6 +33,12 @@ public class PlayerEquipment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (input.isSlow && sensor.frontObjects.Count > 0)
+        {
+            if (sensor.frontObjects[0].isColEvent && !col.getWater) // 접촉시 바로 이벤트가 떠야하면
+                sensor.frontObjects[0].ObjectAction(gameObject);
+        }
+
         if (input.isUse)
         {
             Debug.Log("x 누름");
