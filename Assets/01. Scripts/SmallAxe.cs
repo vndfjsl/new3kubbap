@@ -40,10 +40,10 @@ public class SmallAxe : Item
         //    StartCoroutine(hit1());
         //}
 
-        //if (col.getAxetwo) //파란천 부시기
-        //{
-        //    Destroy(col.blue);
-        //}
+        if (GameManager.instance.col.getAxetwo) //파란천 부시기
+        {
+            Destroy(GameManager.instance.col.blue);
+        }
         base.Use();
         Debug.Log("도끼를 사용했다.");
     }
