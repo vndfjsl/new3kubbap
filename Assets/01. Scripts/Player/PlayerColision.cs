@@ -29,8 +29,6 @@ public class PlayerColision : MonoBehaviour
     public SkillCheck skill;
     public GameObject a;
 
-    [SerializeField] private float time = 0;
-
     private void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
@@ -38,7 +36,7 @@ public class PlayerColision : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
+        
         if (digCount > 2) //3번 이상 쳐맞으면 나무가 부셔진당
         {
             tree.SetActive(false);
@@ -51,12 +49,7 @@ public class PlayerColision : MonoBehaviour
             anim.WaterAction(false);
         }
 
-        if (time > Random.Range(3, 10) && GameManager.instance.input.Tigermeeting == 1)
-        {
-            if(panel != null) panel.SetActive(true);
-            if(skill != null) skill.BossCheck();
-            time = 0;
-        }
+        
     }
 
     public void StopFire() //불 꺼

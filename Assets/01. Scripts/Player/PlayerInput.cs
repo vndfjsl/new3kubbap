@@ -15,7 +15,7 @@ public class PlayerInput : MonoBehaviour
     public bool isSkip { get; private set; }
 
     public bool isDownArrow = false;
-    public int Tigermeeting = 0;
+    public static int Tigermeeting = 0;
     private Vector2 twoVer = new Vector2(190, -2.37f);
     private Vector2 tigerPoint = new Vector2(249, -2.37f);
     private Vector2 first = new Vector2(59.93f, 0);
@@ -77,8 +77,14 @@ public class PlayerInput : MonoBehaviour
             if(GameManager.instance.col.loadScene)
             {
                 SceneManager.LoadScene(2);
-                Tigermeeting++;
+                Invoke("Delay", 3f);
+                Debug.Log(Tigermeeting);
             }
         }
+    }
+
+    private void Delay()
+    {
+        Tigermeeting++;
     }
 }

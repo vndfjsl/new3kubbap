@@ -6,7 +6,11 @@ using UnityEngine.SceneManagement;
 public class Tiger : MonoBehaviour
 {
     public GameObject tiger;
-    
+    public float tigetSpeed = 0.005f;
+    [SerializeField] private float time = 0;
+    public GameObject panel;
+    public SkillCheck skill;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +20,15 @@ public class Tiger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tiger.transform.Translate(Vector3.right * 0.005f); //오른쪽으로 이동
+        tiger.transform.Translate(Vector3.right * tigetSpeed); //오른쪽으로 이동
+        time += Time.deltaTime;
+
+        if (time > Random.Range(3, 10))
+        {
+            if (panel != null) panel.SetActive(true);
+            if (skill != null) skill.BossCheck();
+            time = 0;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

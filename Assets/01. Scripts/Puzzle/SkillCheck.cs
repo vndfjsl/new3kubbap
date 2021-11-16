@@ -55,12 +55,6 @@ public class SkillCheck : MonoBehaviour
                     Debug.Log("Success");
                     successed++;
                 }
-                else if(fillImage.fillAmount ==1)
-                {
-                    GameManager.instance.col.panel.SetActive(false);
-                    fillImage.fillAmount = 0;
-                    Debug.Log("Fail");
-                }
                 else
                 {
                     //Debug.Log("Fail");
