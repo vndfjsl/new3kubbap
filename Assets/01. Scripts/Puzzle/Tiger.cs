@@ -16,7 +16,7 @@ public class Tiger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tiger.transform.Translate(Vector3.right * 0.06f); //오른쪽으로 이동
+        tiger.transform.Translate(Vector3.right * 0.005f); //오른쪽으로 이동
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
