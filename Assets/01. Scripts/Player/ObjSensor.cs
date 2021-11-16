@@ -34,6 +34,10 @@ public class ObjSensor : MonoBehaviour
         if(inter != null)
         {
             frontObjects.Add(inter);
+            if(inter.isColEvent) // 접촉시 바로 이벤트가 떠야하면
+            {
+                inter.ObjectAction(gameObject);
+            }
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Interaction : MonoBehaviour
+public abstract class Interaction : MonoBehaviour, IInteraction
 {
     // import(외부에서)
 
@@ -10,5 +10,6 @@ public abstract class Interaction : MonoBehaviour
 
     // inner(내부값)
 
-    public abstract void ObjectAction();
+    public bool isColEvent = false;
+    public abstract void ObjectAction(GameObject player = null);
 }

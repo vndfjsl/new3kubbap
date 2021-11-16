@@ -35,7 +35,7 @@ public class PlayerEquipment : MonoBehaviour
         {
             Debug.Log("x 누름");
 
-            if (equipItem.itemNumber == 0)
+            if (equipItem != null && equipItem.itemNumber == 0)
             {
                 StartCoroutine(UseOnOff()); // 아이템넘버 0 == 도끼
                 return;

@@ -15,7 +15,7 @@ public class PlayerColision : MonoBehaviour
     public bool isYellow = false;
     public bool isMove = false;
     public int digCount = 0;
-    private PlayerMove move;
+    private PlayerAnimation anim;
     public GameObject blue;
     public GameObject red;
     public GameObject yellow;
@@ -25,6 +25,11 @@ public class PlayerColision : MonoBehaviour
     public SkillCheck skill;
 
     [SerializeField] private float time = 0;
+
+    private void Awake()
+    {
+        anim = GetComponent<PlayerAnimation>();
+    }
 
     private void Start()
     {
@@ -43,14 +48,13 @@ public class PlayerColision : MonoBehaviour
         if(!GameManager.instance.input.isSlow && getWater) //물을 들고 있는가? 이게 중간에 속도 느린거 풀리면 물 들고있는거 없애는 거
         {
             getWater = false;
-            Debug.Log("1");
+            anim.WaterAction(false);
         }
 
-        if (time > UnityEngine.Random.Range(3, 10))
+        if (time > Random.Range(3, 10))
         {
-            Debug.Log("1");
-            panel.SetActive(true);
-            skill.BossCheck();
+            if(panel != null) panel.SetActive(true);
+            if(skill != null) skill.BossCheck();
             time = 0;
         }
     }
@@ -140,11 +144,10 @@ public class PlayerColision : MonoBehaviour
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("water")) //웅덩이에 닿으면 된다 웅덩이에 닿으면 물받기 활성화
         {
-            Debug.Log("물을 받음");
             getWater = true;
         }
     }

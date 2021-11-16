@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class Pond : Interaction
 {
-    public override void ObjectAction()
+    public override void ObjectAction(GameObject player)
     {
         Debug.Log("연못풍덩");
+        player.GetComponent<PlayerAnimation>().WaterAction(true);
     }
 
     // import(외부에서)
