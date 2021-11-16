@@ -23,7 +23,7 @@ public class Tiger : MonoBehaviour
     {
         if(collision.gameObject.CompareTag("PLAYER"))
         {
-            //SceneManager.LoadScene("");
+            SceneManager.LoadScene(3);
         }
     }
 }
