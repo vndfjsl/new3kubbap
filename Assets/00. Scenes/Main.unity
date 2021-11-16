@@ -9589,7 +9589,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 14
   m_Sprite: {fileID: 21300000, guid: 775b6999a08c7f949a790b81c8b55246, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -22574,7 +22574,7 @@ SpriteRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 4d8bbd3dc00720743a5305b53ba2f30e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -32213,14 +32213,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LArmNotWaters:
-  - {fileID: 101857413064501327}
-  - {fileID: 3276978045775234179}
+  - {fileID: 1147872124381977577}
+  - {fileID: 9128392970443475494}
   RArmNotWaters:
-  - {fileID: 1215678185735820492}
-  - {fileID: 3810279874207311589}
+  - {fileID: 3638095499995831375}
+  - {fileID: 8438484639543828330}
   waterSprites:
-  - {fileID: 590930193}
-  - {fileID: 1052816910}
+  - {fileID: 590930195}
+  - {fileID: 1052816912}
 --- !u!1 &1570053068
 GameObject:
   m_ObjectHideFlags: 0

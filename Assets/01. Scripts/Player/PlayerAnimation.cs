@@ -11,10 +11,9 @@ public class PlayerAnimation : MonoBehaviour
     private int hashIsSlow = Animator.StringToHash("isSlow");
     private int hashIsUseAxe = Animator.StringToHash("isUseAxe");
 
-    public GameObject[] LArmNotWaters;
-    public GameObject[] RArmNotWaters;
-
-    public GameObject[] waterSprites;
+    public SpriteRenderer[] LArmNotWaters;
+    public SpriteRenderer[] RArmNotWaters;
+    public SpriteRenderer[] waterSprites;
 
     private void Awake()
     {
@@ -26,7 +25,6 @@ public class PlayerAnimation : MonoBehaviour
     void Update()
     {
         SetSpeed();
-        Debug.Log("1" + RArmNotWaters[0].activeSelf);
     }
 
     private void SetSpeed()
@@ -48,10 +46,9 @@ public class PlayerAnimation : MonoBehaviour
     {
         for(int i=0; i<2; i++)
         {
-            waterSprites[i].SetActive(value);
-            LArmNotWaters[i].SetActive(!value);
-            RArmNotWaters[i].SetActive(!value);
-            Debug.Log(RArmNotWaters[i].activeSelf);
+            waterSprites[i].color = new Color(1, 1, 1, value ? 1 : 0);
+            LArmNotWaters[i].color = new Color(1,1,1, value ? 0 : 1);
+            RArmNotWaters[i].color = new Color(1, 1, 1, value ? 0 : 1);
         }
     }
 }
