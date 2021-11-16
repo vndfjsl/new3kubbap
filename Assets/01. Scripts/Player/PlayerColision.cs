@@ -27,7 +27,7 @@ public class PlayerColision : MonoBehaviour
     public GameObject sky_two;
     public GameObject panel;
     public SkillCheck skill;
-    
+    public GameObject a;
 
     [SerializeField] private float time = 0;
 
@@ -62,6 +62,7 @@ public class PlayerColision : MonoBehaviour
     public void StopFire() //불 꺼
     {
         Fire.gameObject.SetActive(false);
+        a.SetActive(true);
     }
 
     public void HandFucntion() //빨간 천 부시기 이거 쓰면 빨간 천 부시는거
@@ -77,6 +78,7 @@ public class PlayerColision : MonoBehaviour
         if (collision.gameObject.CompareTag("tree")) //나무에 닿았을때 휘두르면 브로큰이 트루가 된다
         {
             isBroken = true;
+            Debug.Log("2");
         }
 
         if (collision.gameObject.CompareTag("fire")) //닿으면 불이 나온다 아잇 어
@@ -97,6 +99,7 @@ public class PlayerColision : MonoBehaviour
         if (collision.gameObject.CompareTag("blue"))
         {
             getAxetwo = true;
+            Debug.Log("1");
         }
 
         if(collision.gameObject.CompareTag("yellow"))

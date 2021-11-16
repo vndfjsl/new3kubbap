@@ -27,7 +27,6 @@ public class SmallAxe : Item
     public override void Use()
     {
         if (GameManager.instance.col.isBroken == true) //처음 왼쪽 도끼질
-
         {
             GameManager.instance.col.digCount++;
             StartCoroutine(hit());
@@ -43,6 +42,7 @@ public class SmallAxe : Item
         if (GameManager.instance.col.getAxetwo) //파란천 부시기
         {
             Destroy(GameManager.instance.col.blue);
+            
         }
         base.Use();
         Debug.Log("도끼를 사용했다.");
