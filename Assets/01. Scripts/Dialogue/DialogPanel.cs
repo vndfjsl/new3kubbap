@@ -103,16 +103,6 @@ public class DialogPanel : MonoBehaviour
 
     public void Typing(TextVO dialog)
     {
-        int index = dialog.icon;
-        if (!profileDictionary.ContainsKey(index)) // 프로필이 안들어가있으면
-        {
-            // Resources 폴더의 profile(index) 라는 이름을 가진놈을 찾아서
-            Sprite profile = Resources.Load<Sprite>($"profile{index}");
-            profileDictionary.Add(index, profile); // 넣고
-        }
-
-        dialogProfileImage.sprite = profileDictionary[index]; // 패널 프로필 교체
-
         dialogText.text = dialog.msg;
         isShowNextText = false; // 스킵누르면 true됨
         StartCoroutine(TypingProcess());
