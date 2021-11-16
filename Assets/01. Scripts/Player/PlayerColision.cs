@@ -10,11 +10,17 @@ public class PlayerColision : MonoBehaviour
     public bool isBroken = false;
     public bool isFired = false;
     public bool getWater = false;
+    public bool isRed = false;
+    public bool getAxetwo = false;
+    public bool isYellow = false;
+    public bool isMove = false;
     public int digCount = 0;
     private PlayerMove move;
     public GameObject blue;
     public GameObject red;
     public GameObject yellow;
+    public GameObject sky_one;
+    public GameObject sky_two;
 
     private void Update()
     {
@@ -24,9 +30,10 @@ public class PlayerColision : MonoBehaviour
             //SceneManager.LoadScene(2);
         }
 
-        if (!GameManager.instance.move.isSlow && getWater) //물을 들고 있는가? 이게 중간에 속도 느린거 풀리면 물 들고있는거 없애는 거
+        if(!GameManager.instance.input.isSlow && getWater) //물을 들고 있는가? 이게 중간에 속도 느린거 풀리면 물 들고있는거 없애는 거
         {
             getWater = false;
+            Debug.Log("1");
         }
     }
 
@@ -37,8 +44,8 @@ public class PlayerColision : MonoBehaviour
 
     public void HandFucntion() //빨간 천 부시기 이거 쓰면 빨간 천 부시는거
     {
-        if (getWater && GameManager.instance.move.isSlow) //이 부분 물에
-        {
+        if (getWater && GameManager.instance.input.isSlow && isRed) //이 부분 물에
+        { 
             Destroy(red);
         }
     }
@@ -59,6 +66,32 @@ public class PlayerColision : MonoBehaviour
                 Invoke("StopFire", 5);
             }
         }
+
+        if(collision.gameObject.CompareTag("red"))
+        {
+            isRed = true;
+        }
+
+        if (collision.gameObject.CompareTag("blue"))
+        {
+            getAxetwo = true;
+        }
+
+        if(collision.gameObject.CompareTag("yellow"))
+        {
+            isYellow = true;
+        }
+
+        if (collision.gameObject.CompareTag("sike"))//텔레포트 검은 구덩이
+        {
+            GameManager.instance.input.isDownArrow = true;
+        }
+
+        if(collision.gameObject.CompareTag("Tel"))
+        {
+            isMove = true;
+            
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -66,6 +99,26 @@ public class PlayerColision : MonoBehaviour
         if (collision.gameObject.CompareTag("tree")) //나무에서 떨어지몀ㄴ? 아무일도 안일어남 밑도 마찬가지임
         {
             isBroken = false;
+        }
+
+        if(collision.gameObject.CompareTag("red"))
+        {
+            isRed = false;
+        }
+
+        if (collision.gameObject.CompareTag("blue"))
+        {
+            getAxetwo = false;
+        }
+
+        if (collision.gameObject.CompareTag("yellow"))
+        {
+            isYellow = false;
+        }
+
+        if (collision.gameObject.CompareTag("sike"))//텔레포트 검은 구덩이
+        {
+            GameManager.instance.input.isDownArrow = false;
         }
     }
 

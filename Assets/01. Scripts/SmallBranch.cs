@@ -25,6 +25,11 @@ public class SmallBranch : Item
     public override void Use()
     {
         GameManager.Instance.col.isFired = true;
+
+        if (GameManager.Instance.col.isYellow) //노란천을 부신다
+        {
+            Destroy(GameManager.Instance.col.yellow);
+        }
         Debug.Log("나뭇가지를 사용했다.");
         base.Use();
     }

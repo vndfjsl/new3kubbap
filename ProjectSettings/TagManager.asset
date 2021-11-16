@@ -9,6 +9,11 @@ TagManager:
   - tree
   - fire
   - water
+  - red
+  - blue
+  - yellow
+  - sike
+  - Tel
   layers:
   - Default
   - TransparentFX
