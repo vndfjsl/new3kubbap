@@ -15,6 +15,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         slots = GetComponentsInChildren<Slot>();
+        transform.localPosition = new Vector3 // 쓰는이유 : 에디터에서 인벤토리가리는게꼬와서
+            (transform.localPosition.x, transform.localPosition.y, 10);
         InitSlot();
         OpenInven();
     }
