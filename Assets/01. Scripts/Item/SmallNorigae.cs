@@ -8,7 +8,7 @@ public class SmallNorigae : Item
     {
         base.Get();
         Debug.Log("노리개를 얻었다.");
-        DialogManager.ShowDialog(4);
+        DialogManager.ShowDialog(3);
     }
 
     public override void Drop(Vector3 playerPos)

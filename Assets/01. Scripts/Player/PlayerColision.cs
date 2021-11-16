@@ -36,20 +36,18 @@ public class PlayerColision : MonoBehaviour
 
     private void Update()
     {
-        
         if (digCount > 2) //3번 이상 쳐맞으면 나무가 부셔진당
         {
             tree.SetActive(false);
             //SceneManager.LoadScene(2);
         }
 
-        if(!GameManager.instance.input.isSlow && getWater) //물을 들고 있는가? 이게 중간에 속도 느린거 풀리면 물 들고있는거 없애는 거
+        if (!GameManager.instance.input.isSlow && getWater) //물을 들고 있는가? 이게 중간에 속도 느린거 풀리면 물 들고있는거 없애는 거
         {
             getWater = false;
             anim.WaterAction(false);
+            DialogManager.ShowDialog(12);
         }
-
-        
     }
 
     public void StopFire() //불 꺼
@@ -61,7 +59,7 @@ public class PlayerColision : MonoBehaviour
     public void HandFucntion() //빨간 천 부시기 이거 쓰면 빨간 천 부시는거
     {
         if (getWater && GameManager.instance.input.isSlow && isRed) //이 부분 물에
-        { 
+        {
             Destroy(red);
         }
     }
@@ -80,11 +78,12 @@ public class PlayerColision : MonoBehaviour
             if (Fire != null && !isFired)
             {
                 Fire.gameObject.SetActive(true);
+                DialogManager.ShowDialog(5);
                 Invoke("StopFire", 5);
             }
         }
 
-        if(collision.gameObject.CompareTag("red"))
+        if (collision.gameObject.CompareTag("red"))
         {
             isRed = true;
         }
@@ -95,7 +94,7 @@ public class PlayerColision : MonoBehaviour
             Debug.Log("1");
         }
 
-        if(collision.gameObject.CompareTag("yellow"))
+        if (collision.gameObject.CompareTag("yellow"))
         {
             isYellow = true;
         }
@@ -107,10 +106,10 @@ public class PlayerColision : MonoBehaviour
             skill.CircleFunctionStart(collision.gameObject);
         }
 
-        if(collision.gameObject.CompareTag("Tel"))
+        if (collision.gameObject.CompareTag("Tel"))
         {
             isMove = true;
-            
+
         }
 
         if (collision.gameObject.CompareTag("Tell"))
@@ -137,7 +136,7 @@ public class PlayerColision : MonoBehaviour
             isBroken = false;
         }
 
-        if(collision.gameObject.CompareTag("red"))
+        if (collision.gameObject.CompareTag("red"))
         {
             isRed = false;
         }

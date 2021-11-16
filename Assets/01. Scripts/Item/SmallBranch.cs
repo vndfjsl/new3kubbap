@@ -33,10 +33,11 @@ public class SmallBranch : Item
             DialogManager.ShowDialog(11);
             return;
         }
-
-        GameManager.Instance.col.isFired = true;
-        DialogManager.ShowDialog(8);
-
+        if (!GameManager.Instance.col.isFired)
+        {
+            GameManager.Instance.col.isFired = true;
+            DialogManager.ShowDialog(8);
+        }
 
     }
 }

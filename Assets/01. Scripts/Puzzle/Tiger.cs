@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Tiger : MonoBehaviour
 {
     public GameObject tiger;
-    public float tigetSpeed = 0.005f;
+    public float tigetSpeed = 0.5f;
     [SerializeField] private float time = 0;
     public GameObject panel;
     public SkillCheck skill;
@@ -20,7 +20,8 @@ public class Tiger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tiger.transform.Translate(Vector3.right * tigetSpeed); //오른쪽으로 이동
+        if (GameManager.TimeScale == 0) return;
+        tiger.transform.Translate(Vector3.right * tigetSpeed * Time.deltaTime); //오른쪽으로 이동
         time += Time.deltaTime;
 
         if (time > Random.Range(3, 10))
