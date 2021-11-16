@@ -7,7 +7,7 @@ public class SmallAxe : Item
     private WaitForSeconds ws;
     private float delay = 0.3f;
 
-    private void Start()
+    private  void Start()
     {
         ws = new WaitForSeconds(delay);
     }

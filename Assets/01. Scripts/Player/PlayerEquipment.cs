@@ -34,10 +34,20 @@ public class PlayerEquipment : MonoBehaviour
         if (input.isUse)
         {
             Debug.Log("x 누름");
-            StartCoroutine(UseOnOff());
+
+            if (equipItem.itemNumber == 0)
+            {
+                StartCoroutine(UseOnOff()); // 아이템넘버 0 == 도끼
+                return;
+            }
 
             if (equipItem == null)
             {
+                if(sensor.frontObjects.Count > 0) // 앞에있는 오브젝트가 있으면(0개보다많으면)
+                {
+                    sensor.frontObjects[0].ObjectAction();
+                }
+
                 GameManager.instance.col.HandFucntion(); // 여기서 없애는거 불러옴. 디버그 로그 잘 뜸 여기문제 아닌거같음
                 Debug.Log("맨손입니다.");
                 return;
