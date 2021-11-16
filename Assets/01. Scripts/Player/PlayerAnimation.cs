@@ -9,7 +9,7 @@ public class PlayerAnimation : MonoBehaviour
 
     private int hashIsWalk = Animator.StringToHash("isWalk");
     private int hashIsSlow = Animator.StringToHash("isSlow");
-    private int hashIsUse = Animator.StringToHash("isUse");
+    private int hashIsUseAxe = Animator.StringToHash("isUseAxe");
 
     private void Awake()
     {
@@ -41,6 +41,6 @@ public class PlayerAnimation : MonoBehaviour
 
     public void SetUse(bool value)
     {
-        anim.SetBool(hashIsUse,value);
+        anim.SetBool(hashIsUseAxe,value);
     }
 }

@@ -1,8 +1,8 @@
 using System;
+using UnityEngine;
 
 [Serializable]
 public class TextVO
 {
-    public int icon;
     public string msg;
 }

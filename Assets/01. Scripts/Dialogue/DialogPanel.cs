@@ -34,8 +34,6 @@ public class DialogPanel : MonoBehaviour
     private RectTransform panelTrm;
     private RectTransform textTransform;
     private WaitForSeconds typingspeedWs = new WaitForSeconds(0.2f);
-    private Dictionary<int, Sprite> profileDictionary =
-        new Dictionary<int, Sprite>();
 
     [SerializeField] private bool isShowNextText = false; // 다음으로 넘겨도된다
     [SerializeField] private bool isShow = false;
@@ -96,23 +94,12 @@ public class DialogPanel : MonoBehaviour
         panelTrm.DOScale(new Vector3(1, 1, 1), 0.8f).OnComplete(() =>
         {
             Typing( textList[currentIndex] );
-            
             isShow = true;
         });
     }
 
     public void Typing(TextVO dialog)
     {
-        int index = dialog.icon;
-        if (!profileDictionary.ContainsKey(index)) // 프로필이 안들어가있으면
-        {
-            // Resources 폴더의 profile(index) 라는 이름을 가진놈을 찾아서
-            Sprite profile = Resources.Load<Sprite>($"profile{index}");
-            profileDictionary.Add(index, profile); // 넣고
-        }
-
-        dialogProfileImage.sprite = profileDictionary[index]; // 패널 프로필 교체
-
         dialogText.text = dialog.msg;
         isShowNextText = false; // 스킵누르면 true됨
         StartCoroutine(TypingProcess());
