@@ -14,6 +14,10 @@ public class PlayerColision : MonoBehaviour
     public bool getAxetwo = false;
     public bool isYellow = false;
     public bool isMove = false;
+    public bool isMoveTwo = false;
+    public bool isMoveThree = false;
+    public bool loadScene = false;
+    public bool isSike = false;
     public int digCount = 0;
     private PlayerAnimation anim;
     public GameObject blue;
@@ -23,17 +27,13 @@ public class PlayerColision : MonoBehaviour
     public GameObject sky_two;
     public GameObject panel;
     public SkillCheck skill;
+    
 
     [SerializeField] private float time = 0;
 
     private void Awake()
     {
         anim = GetComponent<PlayerAnimation>();
-    }
-
-    private void Start()
-    {
-        
     }
 
     private void Update()
@@ -51,7 +51,7 @@ public class PlayerColision : MonoBehaviour
             anim.WaterAction(false);
         }
 
-        if (time > Random.Range(3, 10))
+        if (time > Random.Range(3, 10) && GameManager.instance.input.Tigermeeting == 1)
         {
             if(panel != null) panel.SetActive(true);
             if(skill != null) skill.BossCheck();
@@ -106,13 +106,31 @@ public class PlayerColision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("sike"))//텔레포트 검은 구덩이
         {
-            GameManager.instance.input.isDownArrow = true;
+            isSike = true;
+            panel.SetActive(true);
+            skill.CircleFunctionStart(collision.gameObject);
         }
 
         if(collision.gameObject.CompareTag("Tel"))
         {
             isMove = true;
             
+        }
+
+        if (collision.gameObject.CompareTag("Tell"))
+        {
+            isMoveTwo = true;
+
+        }
+        if (collision.gameObject.CompareTag("Telll"))
+        {
+            isMoveThree = true;
+
+        }
+        if (collision.gameObject.CompareTag("Tellll"))
+        {
+            loadScene = true;
+
         }
     }
 
@@ -140,7 +158,31 @@ public class PlayerColision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("sike"))//텔레포트 검은 구덩이
         {
-            GameManager.instance.input.isDownArrow = false;
+            isSike = false;
+        }
+
+        if (collision.gameObject.CompareTag("Tel"))
+        {
+            isMove = false;
+
+        }
+
+        if (collision.gameObject.CompareTag("Tell"))
+        {
+            isMoveTwo = false;
+
+        }
+
+        if (collision.gameObject.CompareTag("Telll"))
+        {
+            isMoveThree = false;
+
+        }
+
+        if (collision.gameObject.CompareTag("Tellll"))
+        {
+            loadScene = false;
+
         }
     }
 

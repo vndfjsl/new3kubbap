@@ -90,16 +90,18 @@ public class SkillCheck : MonoBehaviour
         }
     }
 
-    //public void CircleFunctionStart()
-    //{
-    //    checkStart = true;
+    public void CircleFunctionStart(GameObject obj)
+    {
+        check.gameObject.SetActive(true);
+        checkStart = true;
+        treeObj = obj;
+        check.fillAmount = checkAmount;
 
-    //    fillImage.gameObject.SetActive(true);
-    //    check.fillAmount = checkAmount;
-    //    check.rectTransform.rotation = Quaternion.Euler(new Vector3
-    //        (0, 0, Random.Range(36, 216)));
-    //    Debug.Log("angle : " + check.transform.rotation.eulerAngles.z);
-    //}
+        float x = Random.Range(163, fillImageWidth);//200에서 앵커포지션까지 중에서 구함.
+                                                    //Debug.Log(x);
+
+        check.transform.localPosition = new Vector3(x, 0, 0);
+    }
 
     public void BossCheck() //상시로 랜덤으로 뜨는 함수
     {
