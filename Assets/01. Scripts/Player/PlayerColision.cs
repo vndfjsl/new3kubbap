@@ -21,9 +21,19 @@ public class PlayerColision : MonoBehaviour
     public GameObject yellow;
     public GameObject sky_one;
     public GameObject sky_two;
+    public GameObject panel;
+    public SkillCheck skill;
+
+    [SerializeField] private float time = 0;
+
+    private void Start()
+    {
+        
+    }
 
     private void Update()
     {
+        time += Time.deltaTime;
         if (digCount > 2) //3번 이상 쳐맞으면 나무가 부셔진당
         {
             tree.SetActive(false);
@@ -34,6 +44,14 @@ public class PlayerColision : MonoBehaviour
         {
             getWater = false;
             Debug.Log("1");
+        }
+
+        if (time > UnityEngine.Random.Range(3, 10))
+        {
+            Debug.Log("1");
+            panel.SetActive(true);
+            skill.BossCheck();
+            time = 0;
         }
     }
 

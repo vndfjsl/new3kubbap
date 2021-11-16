@@ -13,7 +13,6 @@ public class UIManager : MonoBehaviour
 
     private Dictionary<PlayerHeartState, Sprite> bgDictionary
      = new Dictionary<PlayerHeartState, Sprite>();
-    
 
     private void Awake()
     {
@@ -27,6 +26,7 @@ public class UIManager : MonoBehaviour
         bgDictionary.Add(PlayerHeartState.Unstable, changeBgs[1]);
         bgDictionary.Add(PlayerHeartState.Fear, changeBgs[2]);
         bgDictionary.Add(PlayerHeartState.Revenge, changeBgs[3]);
+
     }
 
     public void InventoryUIActive(bool isActive)
@@ -48,6 +48,9 @@ public class UIManager : MonoBehaviour
             //    Inventory.OpenInventory();
             //}
         }
+
+       
+        
 
         //if (Input.GetKeyDown(KeyCode.LeftArrow))
         //{
