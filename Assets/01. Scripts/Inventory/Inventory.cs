@@ -8,10 +8,6 @@ public class Inventory : MonoBehaviour
     public List<Item> items;
     public Slot[] slots;
 
-    private float doubleClickOKTime = 0.3f;
-    private bool isOneClick = false;
-    private float clickRememberTime;
-
     void Start()
     {
         slots = GetComponentsInChildren<Slot>();
@@ -19,30 +15,6 @@ public class Inventory : MonoBehaviour
             (transform.localPosition.x, transform.localPosition.y, 10);
         InitSlot();
         OpenInven();
-    }
-
-    private void Update()
-    {
-        if(isOneClick)
-        {
-            clickRememberTime += Time.deltaTime;
-        }
-
-        //Vector2 mouse = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //Collider2D hit = Physics2D.OverlapCircle(mouse, 0.5f);
-
-        //Debug.Log(hit);
-
-        if (!isOneClick) // <- 더블클릭
-        {
-            isOneClick = true;
-            clickRememberTime = Time.time + doubleClickOKTime;
-        }
-        else if (clickRememberTime > Time.time)
-        {
-            isOneClick = false;
-        }
     }
 
     public void OpenInven()

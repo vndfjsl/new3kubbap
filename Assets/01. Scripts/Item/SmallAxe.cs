@@ -16,6 +16,7 @@ public class SmallAxe : Item
     {
         base.Get();
         Debug.Log("도끼를 얻었다.");
+        DialogManager.ShowDialog(2);
     }
 
     public override void Drop(Vector3 playerPos)
@@ -44,7 +45,6 @@ public class SmallAxe : Item
             Destroy(GameManager.instance.col.blue);
             
         }
-        base.Use();
         Debug.Log("도끼를 사용했다.");
     }
 

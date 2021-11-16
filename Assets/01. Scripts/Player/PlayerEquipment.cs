@@ -46,7 +46,6 @@ public class PlayerEquipment : MonoBehaviour
             if (equipItem != null && equipItem.itemNumber == 0)
             {
                 StartCoroutine(UseOnOff()); // 아이템넘버 0 == 도끼
-                return;
             }
 
             if (equipItem == null)
@@ -111,7 +110,6 @@ public class PlayerEquipment : MonoBehaviour
 
         equipItem = item;
         equipItem.gameObject.SetActive(true);
-        equipItem.Get();
 
         RotateItem();
         MoveHandPos();
@@ -148,6 +146,8 @@ public class PlayerEquipment : MonoBehaviour
                 Item itemObj = sensor.frontItems[i];
                 if (!itemObj.isGround) return; // 땅에 안떨어졌으면 못주워요
 
+                itemObj.Get();
+
                 if(equipItem == null) // 장착 아이템이 없다면
                 {
                     EquipItem(itemObj);
@@ -155,6 +155,7 @@ public class PlayerEquipment : MonoBehaviour
                 }
                 else // 있다면
                 {
+                    
                     inventory.AddItem(itemObj); // 인벤토리에 추가만 해준다.
                     itemObj.gameObject.SetActive(false); // 인벤토리에 넣으면 게임상에는 존재하지 않기때문에 끄고 나중에 인벤에서꺼낼때 다시킨다 + Rotate
 

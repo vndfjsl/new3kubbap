@@ -64,8 +64,5 @@ public abstract class Item : MonoBehaviour, IItem
         }
     }
 
-    public virtual void Use()
-    {
-
-    }
+    public abstract void Use();
 }

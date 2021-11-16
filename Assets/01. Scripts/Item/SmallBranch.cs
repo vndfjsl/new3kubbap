@@ -8,6 +8,7 @@ public class SmallBranch : Item
     {
         base.Get();
         Debug.Log("나뭇가지를 얻었다.");
+        DialogManager.ShowDialog(4);
     }
 
     public override void Drop(Vector3 playerPos)
@@ -24,13 +25,18 @@ public class SmallBranch : Item
 
     public override void Use()
     {
-        GameManager.Instance.col.isFired = true;
+        Debug.Log("나뭇가지를 사용했다.");
 
         if (GameManager.Instance.col.isYellow) //노란천을 부신다
         {
             Destroy(GameManager.Instance.col.yellow);
+            DialogManager.ShowDialog(11);
+            return;
         }
-        Debug.Log("나뭇가지를 사용했다.");
-        base.Use();
+
+        GameManager.Instance.col.isFired = true;
+        DialogManager.ShowDialog(8);
+
+
     }
 }
