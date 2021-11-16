@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SkillCheck : MonoBehaviour
@@ -10,6 +11,8 @@ public class SkillCheck : MonoBehaviour
     public Image check;
     public bool checkStart = false;
     public bool checkComplete = false;
+    private int successed =0;
+    private int failed = 0;
     public Image a;
     public Image b;
     private float checkAmount = 0.4f; // 1=100% 0.1=10% ¹üÀ§Å©
@@ -50,6 +53,13 @@ public class SkillCheck : MonoBehaviour
                     GameManager.instance.col.panel.SetActive(false);
                     fillImage.fillAmount = 0;
                     Debug.Log("Success");
+                    successed++;
+                }
+                else if(fillImage.fillAmount ==1)
+                {
+                    GameManager.instance.col.panel.SetActive(false);
+                    fillImage.fillAmount = 0;
+                    Debug.Log("Fail");
                 }
                 else
                 {
@@ -66,6 +76,16 @@ public class SkillCheck : MonoBehaviour
             if (fillImage.fillAmount < 1f && checkStart)
             {
                 fillImage.fillAmount += Time.deltaTime / 2;
+            }
+
+            if(successed ==7)
+            {
+                SceneManager.LoadScene(4);
+            }
+
+            if(failed == 10)
+            {
+                SceneManager.LoadScene(3);
             }
         }
     }
