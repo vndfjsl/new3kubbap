@@ -1,3 +1,4 @@
+//오민규
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class ClearScript : MonoBehaviour
 
     void Start()
     {
-        DialogManager.ShowDialog(16);
+        DialogManager.ShowDialog(16); //클리어 씬의 대화 띄우기
     }
 
     void Update()

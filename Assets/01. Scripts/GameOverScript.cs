@@ -1,3 +1,4 @@
+//오민규
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ public class GameOverScript : MonoBehaviour
 
     void Start()
     {
-        DialogManager.ShowDialog(15);
+        DialogManager.ShowDialog(15); //사망씬의 대화 띄우기
     }
 
     void Update()

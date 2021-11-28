@@ -1,3 +1,4 @@
+//김예리나
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,9 +56,9 @@ public class SkillCheck : MonoBehaviour
                     Debug.Log("Success");
                     successed++;
                 }
-                else
+                else //실패처리
                 {
-                    //Debug.Log("Fail");
+                    //Debug.Log("Fail"); 
                     GameManager.instance.col.panel.SetActive(false);
                     fillImage.fillAmount = 0;
                     Debug.Log("Fail");
@@ -67,12 +68,12 @@ public class SkillCheck : MonoBehaviour
 
             }
 
-            if (fillImage.fillAmount < 1f && checkStart)
+            if (fillImage.fillAmount < 1f && checkStart) // 게이지가 차는것
             {
                 fillImage.fillAmount += Time.deltaTime / 2;
             }
 
-            if(successed ==7)
+            if(successed ==7)//엔딩이 나뉘는 것
             {
                 SceneManager.LoadScene(4);
             }
@@ -84,7 +85,7 @@ public class SkillCheck : MonoBehaviour
         }
     }
 
-    public void CircleFunctionStart(GameObject obj)
+    public void CircleFunctionStart(GameObject obj) //나무와 닿았을때 나오는 스킬체크 함수
     {
         check.gameObject.SetActive(true);
         checkStart = true;
@@ -97,7 +98,7 @@ public class SkillCheck : MonoBehaviour
         check.transform.localPosition = new Vector3(x, 0, 0);
     }
 
-    public void BossCheck() //상시로 랜덤으로 뜨는 함수
+    public void BossCheck() //상시로 랜덤으로 뜨는 스킬체크 함수
     {
         check.gameObject.SetActive(true);
 

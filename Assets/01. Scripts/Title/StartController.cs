@@ -1,3 +1,4 @@
+//오민규
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class StartController : MonoBehaviour
         startCG.alpha = alphas;
     }
 
-    public void SkipStartScene()
+    public void SkipStartScene() //메인씬으로 넘어감
     {
         SceneManager.LoadScene(1);
         Save.instace.stageNumber = 1;
