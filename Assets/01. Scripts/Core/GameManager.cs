@@ -1,10 +1,11 @@
+//ø¿πŒ±‘
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManager instance;// ΩÃ±€≈Ê
     public static GameManager Instance { get { return instance; } }
 
     private void Awake()

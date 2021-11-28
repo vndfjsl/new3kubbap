@@ -1,3 +1,4 @@
+//오민규
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -38,7 +39,7 @@ public class DialogManager : MonoBehaviour
         }
     }
 
-    public static void ShowDialog(int codeIndex, Action callback = null)
+    public static void ShowDialog(int codeIndex, Action callback = null) //델리게이트 콜백
     {
         // (x번째로 저장된 텍스트 >= 저장된 텍스트 수) = 버그
         if (codeIndex >= instance.dialogTextDictionary.Count) return;
