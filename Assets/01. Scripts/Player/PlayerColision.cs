@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerColision : MonoBehaviour
 {
     public GameObject tree;
-    public GameObject Fire;
+    public GameObject Fire; //감지하는 물체
     public bool isBroken = false;
     public bool isFired = false;
     public bool getWater = false;
@@ -17,9 +17,9 @@ public class PlayerColision : MonoBehaviour
     public bool isMoveTwo = false;
     public bool isMoveThree = false;
     public bool loadScene = false;
-    public bool isSike = false;
-    public int digCount = 0;
-    private PlayerAnimation anim;
+    public bool isSike = false; //무엇에 닿고 있는지 체크하는 불연산자들
+    public int digCount = 0; //파인 숫자
+    private PlayerAnimation anim; //애니메이션
     public GameObject blue;
     public GameObject red;
     public GameObject yellow;
@@ -36,7 +36,7 @@ public class PlayerColision : MonoBehaviour
 
     private void Update()
     {
-        if (digCount > 2) //3번 이상 쳐맞으면 나무가 부셔진당
+        if (digCount > 2) //3번 이상 맞으면 나무가 부셔짐
         {
             tree.SetActive(false);
             //SceneManager.LoadScene(2);
@@ -50,7 +50,7 @@ public class PlayerColision : MonoBehaviour
         }
     }
 
-    public void StopFire() //불 꺼
+    public void StopFire() //불이 꺼짐
     {
         Fire.gameObject.SetActive(false);
         a.SetActive(true);
@@ -66,13 +66,13 @@ public class PlayerColision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("tree")) //나무에 닿았을때 휘두르면 브로큰이 트루가 된다
+        if (collision.gameObject.CompareTag("tree")) //나무에 닿았을때 휘두르면 브로큰이 트루가 된다 그리고 여기서 상호작용하면 나무가 부셔질 수 있다
         {
             isBroken = true;
             Debug.Log("2");
         }
 
-        if (collision.gameObject.CompareTag("fire")) //닿으면 불이 나온다 아잇 어
+        if (collision.gameObject.CompareTag("fire")) //닿으면 불이 나온다
         {
             Debug.Log("나와라");
             if (Fire != null && !isFired)
@@ -83,18 +83,18 @@ public class PlayerColision : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.CompareTag("red"))
+        if (collision.gameObject.CompareTag("red")) //빨간천에 닿고있다
         {
             isRed = true;
         }
 
-        if (collision.gameObject.CompareTag("blue"))
+        if (collision.gameObject.CompareTag("blue"))//파란천에 닿고있다
         {
             getAxetwo = true;
             Debug.Log("1");
         }
 
-        if (collision.gameObject.CompareTag("yellow"))
+        if (collision.gameObject.CompareTag("yellow")) //노란천에 닿고있다
         {
             isYellow = true;
         }
@@ -106,7 +106,7 @@ public class PlayerColision : MonoBehaviour
             skill.CircleFunctionStart(collision.gameObject);
         }
 
-        if (collision.gameObject.CompareTag("Tel"))
+        if (collision.gameObject.CompareTag("Tel")) //다음 퍼즐로 이동
         {
             isMove = true;
 
@@ -131,7 +131,7 @@ public class PlayerColision : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("tree")) //나무에서 떨어지몀ㄴ? 아무일도 안일어남 밑도 마찬가지임
+        if (collision.gameObject.CompareTag("tree")) //나무에서 떨어지면? 아무일도 안일어남 밑도 마찬가지임
         {
             isBroken = false;
         }
